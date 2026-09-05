@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+    <!-- подгружаем иконки -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <div class="container text-center py-4">
+
+        <!-- иконки -->
+        <div>
+            <div class="d-flex align-items-center justify-content-center mx-auto mb-3"  style="width: 64px; height: 64px; border-radius: 50%; background: #e6f1fb;">
+            <i class="bi bi-stars" style="front-size: 28px; color: #185fa5;"></i>
+        </div>
+
+        <!-- надписи -->
+        <div>
+            <h1 class="mb-3">На кого из аниме ты похож?</h1>
+            <h5 class="text-muted mb-1">Пройди короткий квиз, и ИИ подберёт тебе персонажа</h5>
+                        <h5 class="text-muted mb-5">по твоим ответам</h5>
+            <a type="button" class="btn btn-dark mb-5" href="/login">Начать квиз</a>
+        </div>
+
+        <!-- карточки -->
+        <div class="container d-flex gap-3 py-4 justify-content-center">
+            <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header"><i class="bi-pencil-square" style="font-size: 20px;"></i></div>
+            <div class="card-body">
+            <h5 class="card-title">1. Отвечаешь</h5>
+            <p class="card-text">Своими словами или по готовым вопросам</p>
+            </div>
+            </div>
+
+            <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header"><i class="bi bi-cpu" style="font-size: 20px;"></i></div>
+            <div class="card-body">
+            <h5 class="card-text" style="max-left: 18rem;">2. ИИ анализирует</h5>
+                <p class="card-text">Модель сопоставляет ответы с персонажами</p>
+            </div>
+            </div>
+
+            <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header"><i class="bi-emoji-smile" style="font-size: 20px;"></i></div>
+            <div class="card-body">
+            <h5 class="card-title">3. Получаешь результат</h5>
+            <p class="card-text">Персонаж, аниме и объяснение почему</p>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

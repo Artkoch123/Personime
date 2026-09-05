@@ -1,0 +1,19 @@
+h1{color: #000000; text-align: center;}
+h4{color: #C0C0C0; margin-left: 20px}
+p{
+    text-align: left;
+}
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+}
