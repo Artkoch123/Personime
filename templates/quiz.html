@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+    <div class="container text-center py-4">
+
+        <!-- заголовок -->
+        <h1 class="card-title mb-5"> Выберите режим теста</h1>
+
+        <!-- карточки с выбором режима -->
+         <div class="container d-flex gap-5 py-4 align-items-between justify-content-center">
+            <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header"><i class="bi bi-pencil" style="font-size: 20px;"></i></div>
+                <div class="card-body">
+                    <h5 class="card-title">Своими словами</h5>
+                    <p class="card-text">Опиши себя свободным текстом</p>
+                    <a type="button" class="btn btn-light" href="/quiz/freeform">Выбрать</a>
+                </div>
+            </div>
+
+
+             <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header"><i class="bi bi-list-task" style="font-size: 20px;"></i></div>
+                <div class="card-body">
+                    <h5 class="card-text" style="max-left: 18rem;">Готовые вопросы</h5>
+                    <p class="card-text">Ответь на список вопросов</p>
+                    <a type="button" class="btn btn-light" href="/quiz/form">Выбрать</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
