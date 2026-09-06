@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+
+<div>
+    <div class="container text-center py-4">
+
+        <!-- заголовок -->
+        <h1 class="card-title mb-5"> Заполните форму</h1>
+
+        <!-- место для заполнение имени-->
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Ваше имя</label>
+            <input type="name" class="form-control" id="exampleFormControlInput1">
+        </div>
+
+        <!-- место для заполнение информации-->
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Напишите информацио об вас</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+
+        <!-- кнопка для получения результатов-->
+        <a type="button" class="btn btn-dark mb-5" href="/result">Узнать результаты</a>
+
+    </div>
+
+</div>
+
+{% endblock %}
