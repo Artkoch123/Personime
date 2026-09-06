@@ -35,7 +35,21 @@ def quiz():
 
 @app.route('/quiz/freeform', methods=['GET', 'POST'])
 def freeform():
+    if request.method == 'POST':
+        return redirect(url_for('quiz_freeform_result'), code=307)
     return render_template("freeform.html", title="form")
+
+@app.route('/quiz/freeform/result', methods=['GET', 'POST'])
+def quiz_freeform_result():
+    username = request.form.get('username', '')
+    about = request.form.get('about', '')
+    all_text = f"Имя: {username}\nО себе: {about}"
+
+    result_json = analyze(all_text)
+    print(all_text)
+    result = loads(result_json)
+    session.clear()
+    return render_template("result_freeform.html", title="result", result=result)
 
 @app.route('/quiz/form/<int:num>', methods=['GET', 'POST'])
 def form(num):
@@ -47,7 +61,7 @@ def form(num):
     return render_template("form.html", title="form", num=num, question=QUESTIONS[num - 1])
 
 @app.route('/quiz/form/result', methods=['GET', 'POST'])
-def quiz_result():
+def quiz_form_result():
     answers = []
     for i in range(1, len(QUESTIONS) + 1):
         answer = session.get(f'form_{i}')
