@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for
+from ai import analyze
+from json import loads
 
 app = Flask(__name__)
 app.config['secret_key'] = ''
@@ -43,6 +45,20 @@ def form(num):
             return redirect(url_for('quiz_result'))
         return redirect(url_for('form', num=num + 1))
     return render_template("form.html", title="form", num=num, question=QUESTIONS[num - 1])
+
+@app.route('/quiz/form/result', methods=['GET', 'POST'])
+def quiz_result():
+    answers = []
+    for i in range(1, len(QUESTIONS) + 1):
+        answer = session.get(f'form_{i}')
+        if answer:
+            answers.append(f"{QUESTIONS[i - 1]}: {answer}")
+    all_text = "\n".join(answers)
+    result_json = analyze(all_text)
+    result = loads(result_json)
+    session.clear()
+    return render_template("result_form.html", title="result", result=result)
+
 
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1', debug=True)
