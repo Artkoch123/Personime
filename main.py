@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from ai import analyze
 from json import loads
+from anime_image_v2 import get_character_image
 
 app = Flask(__name__)
 app.config['secret_key'] = ''
@@ -46,10 +47,13 @@ def quiz_freeform_result():
     all_text = f"Имя: {username}\nО себе: {about}"
 
     result_json = analyze(all_text)
-    print(all_text)
     result = loads(result_json)
     session.clear()
-    return render_template("result_freeform.html", title="result", result=result)
+    character_image_url_1 = get_character_image(result['first']['character'], result['first']['anime'])
+    character_image_url_2 = get_character_image(result['second']['character'], result['second']['anime'])
+    character_image_url_3 = get_character_image(result['third']['character'], result['third']['anime'])
+    return render_template("result_form.html", title="result", result=result,
+                           character_image_url_1=character_image_url_1, character_image_url_2=character_image_url_2, character_image_url_3=character_image_url_3)
 
 @app.route('/quiz/form/<int:num>', methods=['GET', 'POST'])
 def form(num):
@@ -63,6 +67,7 @@ def form(num):
 @app.route('/quiz/form/result', methods=['GET', 'POST'])
 def quiz_form_result():
     answers = []
+
     for i in range(1, len(QUESTIONS) + 1):
         answer = session.get(f'form_{i}')
         if answer:
@@ -71,7 +76,8 @@ def quiz_form_result():
     result_json = analyze(all_text)
     result = loads(result_json)
     session.clear()
-    return render_template("result_form.html", title="result", result=result)
+    character_image_url_1 = get_character_image("Levi Ackerman")
+    return render_template("result_form.html", title="result", result=result, character_image_url_1=character_image_url_1)
 
 
 if __name__ == '__main__':

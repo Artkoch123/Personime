@@ -3,15 +3,74 @@
 {% block content %}
 
 <div>
+    <!-- Надписи -->
     <div class="container text-center py-4">
-
-        <!--  -->
-        <h1 class="card-title mb-5"> {{ result }}</h1>
-
-        <!-- кнопка для возвращения на главну страницу-->
-        <a type="button" class="btn btn-dark mb-5" href="/">Вернуться на главную</a>
-
+        <h5 class="text-muted mb-1">ТВОЙ РЕЗУЛЬТАТ</h5>
+        <h1 class="mb-3">На кого ты похож</h1>
     </div>
+
+    <!-- Первая карточка -->
+    <div class="card mb-3 border-primary">
+        <div class="card-body d-flex align-items-center gap-3">
+            <div class="rounded-circle bg-light d-flex align-items-center justify-content-center" style="width: 100px; height: 100px; overflow: hidden;">
+                <img src="{{ character_image_url_1 }}" alt="character" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="flex-fill">
+                <div class="d-flex justify-content-between">
+                    <strong>{{ result.first.character }}</strong>
+                    <strong class="text-primary">{{ result.first.match_percent }}%</strong>
+                </div>
+                <p class="text-muted small mb-2">{{ result.first.anime }}</p>
+                <div class="progress mb-3" style="height: 6px;">
+                    <div class="progress-bar" style="width: {{ result.first.match_percent }}%;"></div>
+                </div>
+                 <p class="text-muted small mb-2">{{ result.first.explanation }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Вторая карточка -->
+    <div class="card mb-3 border-primary">
+        <div class="card-body d-flex align-items-center gap-3">
+            <div class="rounded-circle bg-light d-flex align-items-center justify-content-center" style="width: 100px; height: 100px; overflow: hidden;">
+                <img src="{{ character_image_url_2 }}" alt="character" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="flex-fill">
+                <div class="d-flex justify-content-between">
+                    <strong>{{ result.second.character }}</strong>
+                    <strong class="text-primary">{{ result.second.match_percent }}%</strong>
+                </div>
+                <p class="text-muted small mb-2">{{ result.second.anime }}</p>
+                <div class="progress mb-3" style="height: 6px;">
+                    <div class="progress-bar" style="width: {{ result.second.match_percent }}%;"></div>
+                </div>
+                <p class="text-muted small mb-2">{{ result.second.explanation }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Третья карточка -->
+    <div class="card mb-3 border-primary">
+        <div class="card-body d-flex align-items-center gap-3">
+            <div class="rounded-circle bg-light d-flex align-items-center justify-content-center" style="width: 100px; height: 100px; overflow: hidden;">
+                <img src="{{ character_image_url_3 }}" alt="character" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="flex-fill">
+                <div class="d-flex justify-content-between">
+                    <strong>{{ result.third.character }}</strong>
+                    <strong class="text-primary">{{ result.third.match_percent }}%</strong>
+                </div>
+                <p class="text-muted small mb-2">{{ result.third.anime }}</p>
+                <div class="progress mb-3" style="height: 6px;">
+                    <div class="progress-bar" style="width: {{ result.third.match_percent }}%;"></div>
+                </div>
+                <p class="text-muted small mb-2">{{ result.third.explanation }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- кнопка для возвращения на главну страницу-->
+    <a type="button" class="btn btn-dark mb-5" style="items-align: center;" href="/">Вернуться на главную</a>
 
 </div>
 
